@@ -45,7 +45,6 @@ const Tables = () => {
                   <TableCell component="th" scope="row">
                     {row.Name}
                   </TableCell>
-                  <TableCell align="right">{row.Name}</TableCell>
                   <TableCell align="right">{row.Password}</TableCell>
                   <TableCell align="right">{row.ip}</TableCell>
                   <TableCell align="right">{row.country}</TableCell>
