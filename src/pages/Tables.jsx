@@ -20,15 +20,15 @@ const Tables = () => {
 
   const columns = [
     { field: '$id', headerName: 'ID', width: 200 },
-    { field: 'email', headerName: 'Email', width: 130 },
-    { field: 'password', headerName: 'Password', width: 130 },
+    { field: 'Name', headerName: 'Name', width: 250 },
+    { field: 'Password', headerName: 'Password', width: 250 },
     { field: 'ip', headerName: 'IP Address', type: 'number', width: 90 },
     {
       field: 'country',
       headerName: 'Country',
       description: 'This column has a value getter and is not sortable.',
       sortable: false,
-      width: 160,
+      width: 200,
       valueGetter: (params) =>
         `${params.row.firstName || ''} ${params.row.lastName || ''}`,
     },
