@@ -1,67 +1,52 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { databases, DatabaseId, collectionId } from "../config";
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import { DataGrid } from '@mui/x-data-grid'; // Import DataGrid from '@mui/x-data-grid' instead of '@mui/material'
 
 const Tables = () => {
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
+
   useEffect(() => {
-    const promise = databases.listDocuments(DatabaseId, collectionId);
+    const fetchData = async () => {
+      try {
+        const response = await databases.listDocuments(DatabaseId, collectionId);
+        setData(response.documents);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-    promise.then(function (response) {
-      setData(response.documents)
-      console.log(data)
-    }, function (error) {
-      // console.log(error); 
-    });
+    fetchData();
+  }, []);
 
-
-  }, [])
   const columns = [
-  { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'email', headerName: 'email', width: 130 },
-  { field: 'password', headerName: 'password', width: 130 },
-  {
-    field: 'ip',
-    headerName: 'ip address',
-    type: 'number',
-    width: 90,
-  },
-  {
-    field: 'country',
-    headerName: 'country',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 160,
-    valueGetter: (params) =>
-      `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-  },
-];
+    { field: 'id', headerName: 'ID', width: 70 },
+    { field: 'email', headerName: 'Email', width: 130 },
+    { field: 'password', headerName: 'Password', width: 130 },
+    { field: 'ip', headerName: 'IP Address', type: 'number', width: 90 },
+    {
+      field: 'country',
+      headerName: 'Country',
+      description: 'This column has a value getter and is not sortable.',
+      sortable: false,
+      width: 160,
+      valueGetter: (params) =>
+        `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+    },
+  ];
 
   return (
-    <>
-      {data.length === 0 ? <h4>No Data</h4> :
-              {data.map((row) => (
-                 <div style={{ height: 400, width: '100%' }}>
-            <DataGrid
-        rows={row}
-        columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: { page: 0, pageSize: 5 },
-          },
-        }}
-        pageSizeOptions={[5, 10]}
-      />
+    <div style={{ height: 400, width: '100%' }}>
+      {data.length === 0 ? (
+        <h4>No Data</h4>
+      ) : (
+        <DataGrid
+          rows={data}
+          columns={columns}
+          pageSize={5} // Use pageSize instead of pageSizeOptions
+        />
+      )}
     </div>
-              ))}
-      }
-    </>
-  )
-}
-export default Tables
+  );
+};
+
+export default Tables;
