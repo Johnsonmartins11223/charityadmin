@@ -19,7 +19,7 @@ const Tables = () => {
   }, []);
 
   const columns = [
-    { field: '$id', headerName: 'ID', width: 70 },
+    { field: '$id', headerName: 'ID', width: 200 },
     { field: 'email', headerName: 'Email', width: 130 },
     { field: 'password', headerName: 'Password', width: 130 },
     { field: 'ip', headerName: 'IP Address', type: 'number', width: 90 },
@@ -37,7 +37,7 @@ const Tables = () => {
 
 
   return (
-    <div style={{ height: 400, width: '100%' }}>
+    <div style={{ width: '100%' }}>
       {data.length === 0 ? (
         <h4>No Data</h4>
       ) : (
