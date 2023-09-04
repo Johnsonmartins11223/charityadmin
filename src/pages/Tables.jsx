@@ -30,7 +30,7 @@ const Tables = () => {
       sortable: false,
       width: 200,
       valueGetter: (params) =>
-        `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+        `${params.row.Name || ''} ${params.row.Password || ''}`,
     },
   ];
   const getRowId = (row) => row['$id'];
