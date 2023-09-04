@@ -44,7 +44,8 @@ const Tables = () => {
         <DataGrid
           rows={data}
           columns={columns}
-          pageSize={100} // Use pageSize instead of pageSizeOptions
+          pageSize={50} // Use pageSize instead of pageSizeOptions
+          pageSizeOptions={[25, 50, 100]} // Provide a list of available page sizes
             getRowId={getRowId} // Use getRowId to specify the unique identifier
         />
       )}
