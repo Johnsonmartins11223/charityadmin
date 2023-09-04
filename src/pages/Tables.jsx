@@ -19,7 +19,7 @@ const Tables = () => {
   }, []);
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
+    { field: '$id', headerName: 'ID', width: 70 },
     { field: 'email', headerName: 'Email', width: 130 },
     { field: 'password', headerName: 'Password', width: 130 },
     { field: 'ip', headerName: 'IP Address', type: 'number', width: 90 },
