@@ -22,37 +22,45 @@ const Tables = () => {
 
 
   }, [])
+  const columns = [
+  { field: 'id', headerName: 'ID', width: 70 },
+  { field: 'email', headerName: 'email', width: 130 },
+  { field: 'password', headerName: 'password', width: 130 },
+  {
+    field: 'ip',
+    headerName: 'ip address',
+    type: 'number',
+    width: 90,
+  },
+  {
+    field: 'country',
+    headerName: 'country',
+    description: 'This column has a value getter and is not sortable.',
+    sortable: false,
+    width: 160,
+    valueGetter: (params) =>
+      `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+  },
+];
 
   return (
     <>
       {data.length === 0 ? <h4>No Data</h4> :
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Name/Email</TableCell>
-                <TableCell align="right">Password</TableCell>
-                <TableCell align="right">Ip address</TableCell>
-                <TableCell align="right">country</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
               {data.map((row) => (
-                <TableRow
-                  key={row.$id}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row">
-                    {row.Name}
-                  </TableCell>
-                  <TableCell align="right">{row.Password}</TableCell>
-                  <TableCell align="right">{row.ip}</TableCell>
-                  <TableCell align="right">{row.country}</TableCell>
-                </TableRow>
+                 <div style={{ height: 400, width: '100%' }}>
+            <DataGrid
+        rows={row}
+        columns={columns}
+        initialState={{
+          pagination: {
+            paginationModel: { page: 0, pageSize: 5 },
+          },
+        }}
+        pageSizeOptions={[5, 10]}
+        checkboxSelection
+      />
+    </div>
               ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
       }
     </>
   )
