@@ -33,6 +33,8 @@ const Tables = () => {
         `${params.row.firstName || ''} ${params.row.lastName || ''}`,
     },
   ];
+  const getRowId = (row) => row['$id'];
+
 
   return (
     <div style={{ height: 400, width: '100%' }}>
@@ -43,6 +45,7 @@ const Tables = () => {
           rows={data}
           columns={columns}
           pageSize={5} // Use pageSize instead of pageSizeOptions
+            getRowId={getRowId} // Use getRowId to specify the unique identifier
         />
       )}
     </div>
