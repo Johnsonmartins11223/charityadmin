@@ -30,7 +30,7 @@ const Tables = () => {
         <div key={eachData.$id} className="table">
           <p>Name: {eachData.Name}</p>
           <p>password: {eachData.Password}</p>
-          <p>country: {eachData.Country}</p>
+          <p>country: {eachData.country}</p>
         </div>
       )
       )
