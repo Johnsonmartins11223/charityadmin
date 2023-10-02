@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { databases, DatabaseId, collectionId } from "../config";
-import { DataGrid } from '@mui/x-data-grid'; // Import DataGrid from '@mui/x-data-grid' instead of '@mui/material'
 
 const Tables = () => {
   const [data, setData] = useState([]);
