@@ -7,7 +7,10 @@ const Tables = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await databases.listDocuments(DatabaseId, collectionId);
+        const response = await databases.listDocuments(DatabaseId, collectionId), [
+        Query.limit(100),
+        Query.offset(0)
+    ];
         setData(response.documents);
       } catch (error) {
         console.error(error);
