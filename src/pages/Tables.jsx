@@ -18,42 +18,24 @@ const Tables = () => {
     fetchData();
   }, []);
 
-  const columns = [
-    { field: '$id', headerName: 'ID', width: 200 },
-    { field: 'Name', headerName: 'Name', width: 250 },
-    { field: 'Password', headerName: 'Password', width: 250 },
-    { field: 'ip', headerName: 'IP Address', type: 'number', width: 90 },
-    {
-      field: 'country',
-      headerName: 'Country',
-      description: 'This column has a value getter and is not sortable.',
-      sortable: false,
-      width: 200,
-      valueGetter: (params) =>
-        `${params.row.country || ''}`,
-    },
-  ];
-  const getRowId = (row) => row['$id'];
+
 
 
   return (
     <div style={{ width: '100%' }}>
       {data.length === 0 ? (
         <h4>No Data</h4>
-      ) : (
-        <DataGrid
-          rows={data}
-          columns={columns}
-          initialState={{
-          pagination: {
-            paginationModel: { page: 0, pageSize: 25 },
-          },
-        }}
-        pageSizeOptions={[25, 50, 100]}
-        getRowId={getRowId} // Use getRowId to specify the unique identifier
-        />
-      )}
-    </div>
+      ) : data.map((eachData) => 
+      (
+        <div key={eachData.$id} className="table">
+          <p>Name: {eachData.Name}</p>
+          <p>password: {eachData.Password}</p>
+          <p>country: {eachData.Country}</p>
+        </div>
+      )
+      )
+      }
+      </div>
   );
 };
 
