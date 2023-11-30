@@ -1,0 +1,17 @@
+.table{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* flex-direction: column; */
+}
+p{
+    font-weight: bold;
+}
+span {
+    font-weight: normal;
+    color: crimson;
+}
+.table{
+    border: 1px solid gray;
+    box-shadow: 17px 10px 22px 24px rgba(245,237,245,0.38);
+}

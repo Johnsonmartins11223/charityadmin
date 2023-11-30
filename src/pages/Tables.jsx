@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { databases, DatabaseId, collectionId } from "../config";
+import '../pages/tables.css'
+import { Query } from "appwrite";
+
 
 const Tables = () => {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await databases.listDocuments(DatabaseId, collectionId), [
-        Query.limit(100),
-        Query.offset(0)
-    ];
-        setData(response.documents);
-      } catch (error) {
-        console.error(error);
-      }
-    };
 
+  const fetchData = async () => {
+    try {
+      const response = await databases.listDocuments(DatabaseId, collectionId, [
+          Query.limit(1000),
+         
+      ]);
+      setData(response.documents);
+    } catch {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -24,19 +28,23 @@ const Tables = () => {
 
 
   return (
-    <div style={{ width: '100%' }}>
+    <div style={{ width: '100%', padding: "20px"}}>
       {data.length === 0 ? (
         <h4>No Data</h4>
       ) : data.map((eachData) => 
       (
         <div key={eachData.$id} className="table">
-          <p>Name: {eachData.Name}</p>
-          <p>password: {eachData.Password}</p>
-          <p>country: {eachData.country}</p>
+          <p>Name: <span>{eachData.Name}</span></p>
+          <p>password: <span>{eachData.Password}</span> </p>
+          <p>country: <span> {eachData.country} </span></p>
         </div>
       )
       )
       }
+      {/* <div className="buttonContainer" style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
+      <button>prev</button>
+      <button>next</button>
+      </div> */}
       </div>
   );
 };
