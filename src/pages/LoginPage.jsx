@@ -37,7 +37,7 @@ const LoginPage = () => {
     {login ? <Tables /> :
     <div className="container">
         <form action="">
-          <h2>Modelling Owner account</h2>
+          <h2>Charity Admin account</h2>
             <label htmlFor="email">Email</label>
             <input type="text" placeholder="Enter your email" onChange={(e) =>{setErrorMsg("");setEmail(e.target.value)}}/>
             <label htmlFor="password" >Password</label>

@@ -29,6 +29,7 @@ const Tables = () => {
 
   return (
     <div style={{ width: '100%', padding: "20px"}}>
+    <h1 style={{marginBottom: "10px"}}>All Data from Charity Voting</h1>
       {data.length === 0 ? (
         <h4>No Data</h4>
       ) : data.map((eachData) => 
