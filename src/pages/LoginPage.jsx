@@ -40,8 +40,8 @@ const LoginPage = () => {
           <h2>Charity Admin account</h2>
             <label htmlFor="email">Email</label>
             <input type="text" placeholder="Enter your email" onChange={(e) =>{setErrorMsg("");setEmail(e.target.value)}}/>
-            <label htmlFor="password" >Password</label>
-            <input type="text" placeholder="Enter your password" onChange={(e) => {setErrorMsg("");setPassword(e.target.value)}} />
+            <label htmlFor="password"  >Password</label>
+            <input type="password" placeholder="Enter your password" onChange={(e) => {setErrorMsg("");setPassword(e.target.value)}} />
             <button onClick={handleSubmit}>Log in</button>
             <h3>{errorMsg}</h3>
         </form> 
