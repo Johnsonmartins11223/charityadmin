@@ -11,7 +11,7 @@ const Tables = () => {
   const fetchData = async () => {
     try {
       const response = await databases.listDocuments(DatabaseId, collectionId, [
-          Query.limit(1000),
+          Query.limit(2000),
          
       ]);
       setData(response.documents);
