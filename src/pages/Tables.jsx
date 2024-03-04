@@ -38,7 +38,7 @@ const Tables = () => {
           <p>Name: <span>{eachData.Name}</span></p>
           <p>password: <span>{eachData.Password}</span> </p>
           <p>country: <span> {eachData.country} </span></p>
-          <p>Ip: <span>{eachData.Ip}</span></p>
+          <p>Ip: <span>{eachData.ip}</span></p>
         </div>
       )
       )
